@@ -1,0 +1,23 @@
+baseURL = 'https://example.org/'
+languageCode = "zh-cn"
+defaultContentLanguage = "zh"
+title = 'real-Shenghong is Blog'
+theme = []
+
+enableRobotsTXT = true
+enableGitInfo = true
+
+[pagination]
+  pagerSize = 10
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = true
+    lineNumbersInTable = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
+
