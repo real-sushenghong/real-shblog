@@ -1,4 +1,6 @@
 {{- $aboutURL := "about/" | relLangURL -}}
+{{- $privacyURL := "privacy/" | relLangURL -}}
+{{- $termsURL := "terms/" | relLangURL -}}
 
 <footer class="site-footer">
     <div class="site-footer-inner">
@@ -7,6 +9,14 @@
             <span class="footer-separator">·</span>
             <a href="{{ $aboutURL }}">
                 {{ i18n "personal_profile" }}
+            </a>
+            <span class="footer-separator">·</span>
+            <a href="{{ $privacyURL }}">
+                {{ i18n "privacy_policy" }}
+            </a>
+            <span class="footer-separator">·</span>
+            <a href="{{ $termsURL }}">
+                {{ i18n "terms_of_use" }}
             </a>
             <span class="footer-separator">·</span>
             <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
