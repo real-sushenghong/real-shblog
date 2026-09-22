@@ -10,6 +10,8 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: hugo-build-${{ github.workflow }}-${{ github.ref }}
@@ -41,9 +43,15 @@ jobs:
       - name: Build site
         run: hugo --gc --minify --printPathWarnings
 
-      - name: Upload site artifact
-        uses: actions/upload-artifact@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: hugo-site
           path: public/
-          if-no-files-found: error
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/deploy-pages@v4
