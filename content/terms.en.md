@@ -2,6 +2,7 @@
 title: "Terms of Use"
 date: 2026-09-22
 draft: false
+translationKey: terms-en
 ---
 
 You may read and share the content of this site for personal and educational purposes, with appropriate attribution.

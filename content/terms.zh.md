@@ -2,6 +2,7 @@
 title: "使用条款"
 date: 2026-09-22
 draft: false
+translationKey: terms-zh
 ---
 
 你可以在个人学习和教育用途下阅读、分享本站内容，并应注明内容来源。
