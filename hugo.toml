@@ -1,14 +1,99 @@
 baseURL = 'https://example.org/'
 languageCode = "zh-cn"
-defaultContentLanguage = "zh"
-title = 'real-Shenghong is Blog'
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+title = 'Sheng Hone | AI-Native Infrastructure Engineer'
 theme = []
 
 enableRobotsTXT = true
 enableGitInfo = true
 
+[languages]
+  [languages.en]
+    languageName = "English"
+    languageCode = "en-us"
+    weight = 1
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "Home"
+        url = "/"
+        weight = 10
+        [languages.en.menu.main.params]
+          icon = "home"
+
+      [[languages.en.menu.main]]
+        name = "Blog"
+        url = "/posts/"
+        weight = 20
+        [languages.en.menu.main.params]
+          icon = "book"
+
+      [[languages.en.menu.main]]
+        name = "Projects"
+        url = "/projects/"
+        weight = 30
+        [languages.en.menu.main.params]
+          icon = "project"
+
+      [[languages.en.menu.main]]
+        name = "Focus"
+        url = "/directions/"
+        weight = 40
+        [languages.en.menu.main.params]
+          icon = "compass"
+
+      [[languages.en.menu.main]]
+        name = "About"
+        url = "/about/"
+        weight = 50
+        [languages.en.menu.main.params]
+          icon = "user"
+
+  [languages.zh]
+    languageName = "中文"
+    languageCode = "zh-cn"
+    weight = 2
+
+    [languages.zh.menu]
+      [[languages.zh.menu.main]]
+        name = "首页"
+        url = "/"
+        weight = 10
+        [languages.zh.menu.main.params]
+          icon = "home"
+
+      [[languages.zh.menu.main]]
+        name = "博客"
+        url = "/posts/"
+        weight = 20
+        [languages.zh.menu.main.params]
+          icon = "book"
+
+      [[languages.zh.menu.main]]
+        name = "项目"
+        url = "/projects/"
+        weight = 30
+        [languages.zh.menu.main.params]
+          icon = "project"
+
+      [[languages.zh.menu.main]]
+        name = "技术方向"
+        url = "/directions/"
+        weight = 40
+        [languages.zh.menu.main.params]
+          icon = "compass"
+
+      [[languages.zh.menu.main]]
+        name = "关于"
+        url = "/about/"
+        weight = 50
+        [languages.zh.menu.main.params]
+          icon = "user"
+
 [pagination]
   pagerSize = 10
+
 [markup]
   [markup.highlight]
     noClasses = false
@@ -17,7 +102,7 @@ enableGitInfo = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
 [module]
   [[module.imports]]
     path = "github.com/adityatelange/hugo-PaperMod"
-

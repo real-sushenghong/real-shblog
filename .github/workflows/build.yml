@@ -1,0 +1,49 @@
+name: Hugo Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hugo-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.150.0'
+          extended: true
+
+      - name: Download Hugo modules
+        run: hugo mod download
+
+      - name: Build site
+        run: hugo --gc --minify --printPathWarnings
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-site
+          path: public/
+          if-no-files-found: error

@@ -80,6 +80,8 @@ hugo server --bind 0.0.0.0
 http://localhost:1313
 ```
 
+GitHub Actions 会在推送到 `main` 或提交 Pull Request 时自动检查 Hugo 配置并构建站点，构建结果会作为 workflow artifact 保存。
+
 构建：
 
 ```bash

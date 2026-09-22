@@ -1,0 +1,229 @@
+{{- $mainNavigationLabel := i18n "main_navigation" -}}
+{{- $searchLabel := i18n "search" -}}
+{{- $languageSwitchLabel := i18n "language_switch" -}}
+{{- $themeSwitchLabel := i18n "theme_switch" -}}
+{{- $searchPlaceholder := i18n "search_placeholder" -}}
+{{- $searchNoResults := i18n "search_no_results" -}}
+{{- $searchPages := slice -}}
+{{- range site.RegularPages -}}{{- $searchPages = $searchPages | append (dict "title" .Title "url" .RelPermalink
+"description" .Description "content" .Plain) -}}{{- end -}}
+{{- $searchIndex := $searchPages | jsonify | safeHTML -}}
+
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="brand" href="/">
+            <span class="brand-name">Sheng Hone</span>
+            <span class="brand-tag"><span class="brand-tag-text">AI-Native Infrastructure Engineer</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="{{ $mainNavigationLabel }}">
+            {{ range site.Menus.main }}
+            <a href="{{ .URL | relLangURL }}" class="nav-item">
+                {{ if eq .Params.icon "home" }}
+                <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 10 9-7 9 7"></path>
+                    <path d="M5 9v11h14V9"></path>
+                    <path d="M9 20v-6h6v6"></path>
+                </svg>
+                {{ else if eq .Params.icon "book" }}
+                <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v17H7.5A2.5 2.5 0 0 0 5 21.5v-17Z"></path>
+                    <path d="M5 19.5A2.5 2.5 0 0 1 7.5 17H20"></path>
+                    <path d="M9 6h7M9 10h5"></path>
+                </svg>
+                {{ else if eq .Params.icon "project" }}
+                <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m8 8-4 4 4 4"></path>
+                    <path d="m16 8 4 4-4 4"></path>
+                    <path d="m14 4-4 16"></path>
+                </svg>
+                {{ else if eq .Params.icon "compass" }}
+                <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                    <path d="m14 10 4-4"></path>
+                </svg>
+                {{ else if eq .Params.icon "user" }}
+                <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="7" r="3"></circle>
+                    <path d="M5 21a7 7 0 0 1 14 0"></path>
+                </svg>
+                {{ end }}
+
+                <span>{{ .Name }}</span>
+            </a>
+            {{ end }}
+        </nav>
+
+        <div class="header-tools">
+            <div class="header-switches" aria-label="Site settings">
+                <button class="language-toggle" type="button" aria-label="{{ $languageSwitchLabel }}">
+                    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M3 12h18"></path>
+                        <path d="M12 3a15 15 0 0 1 0 18"></path>
+                        <path d="M12 3a15 15 0 0 0 0 18"></path>
+                    </svg>
+                    <span>
+                        {{ if eq site.Language.Lang "zh" }}EN{{ else }}中文{{ end }}
+                    </span>
+                </button>
+
+                <button class="theme-toggle icon-button" type="button" aria-label="{{ $themeSwitchLabel }}">
+                    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2"></path>
+                        <path d="M12 21v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M1 12h2"></path>
+                        <path d="M21 12h2"></path>
+                        <path d="m4.93 19.07 1.41-1.41"></path>
+                        <path d="m17.66 6.34 1.41-1.41"></path>
+                    </svg>
+                </button>
+
+                <button class="search-toggle icon-button" type="button" aria-label="{{ $searchLabel }}"
+                    aria-expanded="false" aria-controls="site-search">
+                    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6.5"></circle>
+                        <path d="m16 16 5 5"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="search-popover" id="site-search" hidden>
+                <div class="search-popover-inner">
+                    <label class="search-label" for="site-search-input">{{ i18n "search" }}</label>
+                    <input id="site-search-input" class="search-input" type="search"
+                        placeholder="{{ $searchPlaceholder }}" autocomplete="off">
+                    <div class="search-results" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script id="site-search-index" type="application/json">{{ $searchIndex }}</script>
+
+<script>
+    (function () {
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem("theme");
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (systemDark ? "dark" : "light");
+
+        root.setAttribute("data-theme", theme);
+
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            const updateThemeIcon = function () {
+                const current = root.getAttribute("data-theme");
+                if (current === "dark") {
+                    themeToggle.innerHTML = `
+                        <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+                        </svg>
+                    `;
+                } else {
+                    themeToggle.innerHTML = `
+                        <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 1v2"></path>
+                            <path d="M12 21v2"></path>
+                            <path d="m4.93 4.93 1.41 1.41"></path>
+                            <path d="m17.66 17.66 1.41 1.41"></path>
+                            <path d="M1 12h2"></path>
+                            <path d="M21 12h2"></path>
+                            <path d="m4.93 19.07 1.41-1.41"></path>
+                            <path d="m17.66 6.34 1.41-1.41"></path>
+                        </svg>
+                    `;
+                }
+            };
+
+            updateThemeIcon();
+
+            themeToggle.addEventListener("click", function () {
+                const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                root.setAttribute("data-theme", nextTheme);
+                localStorage.setItem("theme", nextTheme);
+                updateThemeIcon();
+            });
+        }
+
+        const languageToggle = document.querySelector(".language-toggle");
+        if (languageToggle) {
+            languageToggle.addEventListener("click", function () {
+                const currentLanguage = "{{ site.Language.Lang }}";
+                const currentPath = window.location.pathname;
+
+                if (currentLanguage === "zh") {
+                    window.location.href = currentPath.replace(/^\/zh(?=\/|$)/, "") || "/";
+                    return;
+                }
+
+                window.location.href = "/zh" + (currentPath === "/" ? "/" : currentPath);
+            });
+        }
+
+        const searchToggle = document.querySelector(".search-toggle");
+        const searchPopover = document.querySelector(".search-popover");
+        const searchInput = document.querySelector(".search-input");
+        const searchResults = document.querySelector(".search-results");
+
+        if (searchToggle && searchPopover && searchInput && searchResults) {
+            const searchIndex = JSON.parse(document.getElementById("site-search-index").textContent);
+
+            const closeSearch = function () {
+                searchPopover.hidden = true;
+                searchToggle.setAttribute("aria-expanded", "false");
+            };
+
+            const renderResults = function (query) {
+                const normalizedQuery = query.trim().toLowerCase();
+                if (!normalizedQuery) {
+                    searchResults.innerHTML = "";
+                    return;
+                }
+
+                const matches = searchIndex.filter(function (page) {
+                    return [page.title, page.description, page.content]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase()
+                        .includes(normalizedQuery);
+                }).slice(0, 8);
+
+                searchResults.innerHTML = matches.length
+                    ? matches.map(function (page) {
+                        return `<a class="search-result" href="${page.url}">
+                            <strong>${page.title}</strong>
+                            <span>${page.description || ""}</span>
+                        </a>`;
+                    }).join("")
+                    : `<p class="search-empty">{{ $searchNoResults }}</p>`;
+            };
+
+            searchToggle.addEventListener("click", function () {
+                const willOpen = searchPopover.hidden;
+                searchPopover.hidden = !willOpen;
+                searchToggle.setAttribute("aria-expanded", String(willOpen));
+                if (willOpen) {
+                    searchInput.focus();
+                    renderResults(searchInput.value);
+                }
+            });
+
+            searchInput.addEventListener("input", function () {
+                renderResults(searchInput.value);
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeSearch();
+                }
+            });
+        }
+    })();
+</script>
