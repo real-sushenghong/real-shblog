@@ -164,6 +164,7 @@ html:not([data-theme="dark"]) {
 }
 
 .nav-item {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -175,6 +176,56 @@ html:not([data-theme="dark"]) {
 
 .nav-item:hover {
     opacity: 0.7;
+}
+
+.nav-item--about {
+    isolation: isolate;
+}
+
+.about-tooltip {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    max-width: min(420px, calc(100vw - 32px));
+    padding: 9px 14px;
+    border: 1px solid var(--header-border);
+    border-radius: 999px;
+    background: var(--page-bg);
+    color: var(--header-text);
+    box-shadow: 0 10px 24px var(--header-shadow);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.about-tooltip strong {
+    color: #d39b2a;
+    font-weight: 600;
+}
+
+.nav-item--about:hover .about-tooltip,
+.nav-item--about:focus-visible .about-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+@media (max-width: 640px) {
+    .about-tooltip {
+        white-space: normal;
+        width: min(280px, calc(100vw - 32px));
+        border-radius: 16px;
+    }
 }
 
 .nav-icon {

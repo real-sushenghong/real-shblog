@@ -4,6 +4,8 @@
 {{- $themeSwitchLabel := i18n "theme_switch" -}}
 {{- $searchPlaceholder := i18n "search_placeholder" -}}
 {{- $searchNoResults := i18n "search_no_results" -}}
+{{- $aboutHintTitle := i18n "about_hint_title" -}}
+{{- $aboutHintDescription := i18n "about_hint_description" -}}
 {{- $siteBasePath := (urls.Parse site.BaseURL).Path | strings.TrimSuffix "/" -}}
 {{- $searchPages := slice -}}
 {{- range site.RegularPages -}}{{- $searchPages = $searchPages | append (dict "title" .Title "url" .RelPermalink
@@ -20,7 +22,7 @@
         <nav class="main-nav" aria-label="{{ $mainNavigationLabel }}">
             {{ range site.Menus.main }}
             {{- $menuPath := strings.TrimPrefix (strings.TrimPrefix .URL $siteBasePath) "/" -}}
-            <a href="{{ $menuPath | relLangURL }}" class="nav-item">
+            <a href="{{ $menuPath | relLangURL }}" class="nav-item{{ if eq .Params.icon "user" }} nav-item--about{{ end }}">
                 {{ if eq .Params.icon "home" }}
                 <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m3 10 9-7 9 7"></path>
@@ -53,6 +55,12 @@
                 {{ end }}
 
                 <span>{{ .Name }}</span>
+                {{ if eq .Params.icon "user" }}
+                <span class="about-tooltip" role="tooltip">
+                    <strong>{{ $aboutHintTitle }}</strong>
+                    <span>{{ $aboutHintDescription }}</span>
+                </span>
+                {{ end }}
             </a>
             {{ end }}
         </nav>
