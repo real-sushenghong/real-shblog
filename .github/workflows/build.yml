@@ -35,8 +35,8 @@ jobs:
           hugo-version: '0.150.0'
           extended: true
 
-      - name: Download Hugo modules
-        run: hugo mod download
+      - name: Verify Hugo modules
+        run: hugo mod verify
 
       - name: Build site
         run: hugo --gc --minify --printPathWarnings
