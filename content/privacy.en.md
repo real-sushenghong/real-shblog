@@ -2,6 +2,7 @@
 title: "Privacy Policy"
 date: 2026-09-22
 draft: false
+translationKey: privacy-en
 ---
 
 This site does not require an account and does not intentionally collect personal information.

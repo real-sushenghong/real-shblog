@@ -2,6 +2,7 @@
 title: "隐私政策"
 date: 2026-09-22
 draft: false
+translationKey: privacy-zh
 ---
 
 本站无需注册账号，也不会主动收集个人信息。
