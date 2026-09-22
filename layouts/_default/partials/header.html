@@ -4,6 +4,7 @@
 {{- $themeSwitchLabel := i18n "theme_switch" -}}
 {{- $searchPlaceholder := i18n "search_placeholder" -}}
 {{- $searchNoResults := i18n "search_no_results" -}}
+{{- $siteBasePath := (urls.Parse site.BaseURL).Path | strings.TrimSuffix "/" -}}
 {{- $searchPages := slice -}}
 {{- range site.RegularPages -}}{{- $searchPages = $searchPages | append (dict "title" .Title "url" .RelPermalink
 "description" .Description "content" .Plain) -}}{{- end -}}
@@ -11,7 +12,7 @@
 
 <header class="site-header">
     <div class="site-header-inner">
-        <a class="brand" href="/">
+        <a class="brand" href="{{ site.Home.RelPermalink }}">
             <span class="brand-name">Sheng Hone</span>
             <span class="brand-tag"><span class="brand-tag-text">AI-Native Infrastructure Engineer</span></span>
         </a>
@@ -157,13 +158,18 @@
             languageToggle.addEventListener("click", function () {
                 const currentLanguage = "{{ site.Language.Lang }}";
                 const currentPath = window.location.pathname;
+                const basePath = "{{ $siteBasePath }}";
+                const currentSitePath = currentPath.startsWith(basePath)
+                    ? currentPath.slice(basePath.length) || "/"
+                    : "/";
 
                 if (currentLanguage === "zh") {
-                    window.location.href = currentPath.replace(/^\/zh(?=\/|$)/, "") || "/";
+                    const englishPath = currentSitePath.replace(/^\/zh(?=\/|$)/, "") || "/";
+                    window.location.href = basePath + englishPath;
                     return;
                 }
 
-                window.location.href = "/zh" + (currentPath === "/" ? "/" : currentPath);
+                window.location.href = basePath + "/zh" + (currentSitePath === "/" ? "/" : currentSitePath);
             });
         }
 
