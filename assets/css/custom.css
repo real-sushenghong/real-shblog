@@ -328,6 +328,20 @@ html:not([data-theme="dark"]) {
     text-underline-offset: 3px;
 }
 
+/* Language changes are controlled by the global header switch. */
+.post-meta:has(.i18n_list) {
+    font-size: 0;
+}
+
+.post-meta:has(.i18n_list)>span:first-child {
+    font-size: 14px;
+}
+
+.post-meta:has(.i18n_list) .i18n_list,
+.post-meta:has(.i18n_list)>span:has(+ .i18n_list) {
+    display: none;
+}
+
 .footer-separator {
     margin: 0 8px;
 }

@@ -19,7 +19,8 @@
 
         <nav class="main-nav" aria-label="{{ $mainNavigationLabel }}">
             {{ range site.Menus.main }}
-            <a href="{{ .URL | relLangURL }}" class="nav-item">
+            {{- $menuPath := strings.TrimPrefix (strings.TrimPrefix .URL $siteBasePath) "/" -}}
+            <a href="{{ $menuPath | relLangURL }}" class="nav-item">
                 {{ if eq .Params.icon "home" }}
                 <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m3 10 9-7 9 7"></path>
