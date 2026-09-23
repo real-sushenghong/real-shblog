@@ -271,9 +271,15 @@ body:has(.home-page) {
     stroke: #fff;
 }
 
+/* 首页语言切换和搜索：去掉药丸样式，和 About 等导航项一致 */
 .site-header--home .language-toggle,
 .site-header--home .icon-button {
-    border-color: rgba(255,255,255,0.3);
+    border: none;
+    background: transparent;
+    padding: 0;
+    min-width: auto;
+    height: auto;
+    border-radius: 0;
     color: #fff;
 }
 
@@ -281,8 +287,63 @@ body:has(.home-page) {
     stroke: #fff;
 }
 
+/* 首页隐藏主题切换按钮（全屏 hero 背景图片无需切换） */
+.site-header--home .theme-toggle {
+    display: none;
+}
+
 .site-header--home .language-toggle span {
     color: #fff;
+}
+
+/* 首页搜索弹出框：高度透明 + 微光晕，和 hero 背景融合但有区分 */
+.site-header--home .search-popover {
+    --search-popover-bg: rgba(10, 12, 18, 0.15);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.1);
+}
+html:not([data-theme="dark"]) .site-header--home .search-popover {
+    --search-popover-bg: rgba(245, 245, 245, 0.12);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.06),
+        0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* 首页搜索输入框：高度透明，字体颜色清晰可读 */
+.site-header--home .search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+html:not([data-theme="dark"]) .site-header--home .search-input {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #222;
+    text-shadow: none;
+}
+.site-header--home .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+html:not([data-theme="dark"]) .site-header--home .search-input::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+/* 首页搜索结果项 */
+.site-header--home .search-result {
+    color: rgba(255, 255, 255, 0.85);
+}
+html:not([data-theme="dark"]) .site-header--home .search-result {
+    color: rgba(0, 0, 0, 0.75);
+}
+.site-header--home .search-result:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+html:not([data-theme="dark"]) .site-header--home .search-result:hover {
+    background: rgba(0, 0, 0, 0.04);
 }
 
 /* Dark theme: keep homepage header dark-transparent */
@@ -1027,39 +1088,54 @@ html:not([data-theme="dark"]) .search-empty {
 .category-breadcrumb {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
-    font-size: 15px;
-    color: var(--header-muted);
-    background: var(--breadcrumb-bar-bg);
-    padding: 8px 16px;
-    border-radius: 10px;
 }
 
-.breadcrumb-link,
-.breadcrumb-current {
+/* ── 面包屑胶囊（椭圆形彩色背景） ── */
+.crumb-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
+    padding: 2px 11px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 500;
     text-decoration: none;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
-.breadcrumb-link {
-    color: #7c4dff;
+.crumb-pill--home {
+    background: rgba(255, 71, 87, 0.10);
+    color: #ff4757;
+    border-color: rgba(255, 71, 87, 0.20);
+}
+.crumb-pill--home:hover {
+    background: rgba(255, 71, 87, 0.18);
+    border-color: rgba(255, 71, 87, 0.35);
 }
 
-.breadcrumb-link:hover {
-    color: #6a3de0;
+.crumb-pill--categories {
+    background: rgba(30, 144, 255, 0.10);
+    color: #1e90ff;
+    border-color: rgba(30, 144, 255, 0.20);
+}
+.crumb-pill--categories:hover {
+    background: rgba(30, 144, 255, 0.18);
+    border-color: rgba(30, 144, 255, 0.35);
 }
 
-.breadcrumb-current {
-    color: var(--header-muted);
+.crumb-pill--current {
+    background: rgba(162, 89, 255, 0.10);
+    color: #a855f7;
+    border-color: rgba(162, 89, 255, 0.20);
 }
 
-.breadcrumb-icon,
-.breadcrumb-chevron {
-    width: 16px;
-    height: 16px;
+.crumb-pill-icon {
+    width: 11px;
+    height: 11px;
     stroke: currentColor;
     fill: none;
     stroke-width: 2;
@@ -1068,14 +1144,21 @@ html:not([data-theme="dark"]) .search-empty {
     flex-shrink: 0;
 }
 
-.breadcrumb-current:last-child {
-    color: var(--header-text);
-    font-weight: 600;
-}
-
-.breadcrumb-sep {
+.crumb-sep {
     display: inline-flex;
     align-items: center;
+    color: var(--header-muted);
+    opacity: 0.4;
+}
+
+.crumb-chevron {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .category-header {
