@@ -71,6 +71,13 @@ html:not([data-theme="dark"]) {
     box-sizing: border-box;
 }
 
+/* 神经网络关系图页面：取消 .main 的宽度限制，实现全屏效果 */
+.main:has(.category-neural-page) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 /* Shift home page content left */
 main.home-page {
     max-width: 1200px !important;
