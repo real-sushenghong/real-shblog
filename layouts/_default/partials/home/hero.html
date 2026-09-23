@@ -1,31 +1,46 @@
+{{- $postsURL := "posts/" | relLangURL -}}
+{{- $privacyURL := "privacy/" | relLangURL -}}
+{{- $termsURL := "terms/" | relLangURL -}}
+
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-gallery" aria-hidden="true">
+        <img src="{{ "images/b1.jpg" | relURL }}" alt="" class="hero-gallery-img" data-index="0">
+        <img src="{{ "images/b2.jpg" | relURL }}" alt="" class="hero-gallery-img" data-index="1">
+        <img src="{{ "images/b3.jpg" | relURL }}" alt="" class="hero-gallery-img" data-index="2">
+        <img src="{{ "images/b4.jpg" | relURL }}" alt="" class="hero-gallery-img" data-index="3">
+    </div>
 
-        <p class="hero-eyebrow">
-            AI-NATIVE INFRASTRUCTURE ENGINEER
-        </p>
+    <div class="hero-overlay"></div>
 
-        <h1>
-            {{ i18n "hero_title" }}
-        </h1>
-
-        <p class="hero-description">
-            {{ i18n "hero_description" }}
-        </p>
-
+    <div class="hero-body">
         <div class="hero-actions">
-
-            <a href="{{ "posts/" | relLangURL }}" class="hero-button primary">
+            <a href="{{ $postsURL }}" class="hero-button primary">
                 {{ i18n "read_articles" }}
             </a>
-
-            <a href="https://github.com/real-sushenghong" class="hero-button secondary" target="_blank" rel="noopener">
-                GitHub
-            </a>
-
         </div>
+    </div>
 
+    <div class="hero-footer">
+        <p>
+            © {{ now.Year }} Sheng Hone. {{ i18n "all_rights_reserved" }}
+            <span class="hero-footer-sep">·</span>
+            <a href="{{ $privacyURL }}">{{ i18n "privacy_policy" }}</a>
+            <span class="hero-footer-sep">·</span>
+            <a href="{{ $termsURL }}">{{ i18n "terms_of_use" }}</a>
+            <span class="hero-footer-sep">·</span>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+        </p>
     </div>
 
 </section>
+
+<script>
+(function(){
+    var header = document.querySelector('.site-header--home');
+    if (!header) return;
+
+    // No scroll needed — just ensure header stays transparent
+    header.classList.remove('site-header--scrolled');
+})();
+</script>

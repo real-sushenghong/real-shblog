@@ -24,11 +24,16 @@
   {{- $langPrefix = printf "/%s" $currentLang -}}
 {{- end -}}
 
-<header class="site-header">
+<header class="site-header{{ if .IsHome }} site-header--home{{ end }}">
     <div class="site-header-inner">
         <a class="brand" href="{{ site.Home.RelPermalink }}">
             <span class="brand-name">Real ShengHong  Allegedly</span>
-            <span class="brand-tag"><span class="brand-tag-text">AI-Native Infrastructure Engineer</span></span>
+            <span class="brand-tag">
+    <span class="bw bw--left" style="--i:0">AI</span>
+    <span class="bw bw--bottom" style="--i:1">Native</span>
+    <span class="bw bw--right" style="--i:2">Infrastructure</span>
+    <span class="bw bw--top" style="--i:3">Engineer</span>
+</span>
         </a>
 
         <nav class="main-nav" aria-label="{{ $mainNavigationLabel }}">
@@ -329,4 +334,61 @@
             });
         }
     })();
+</script>
+
+<!-- Bounce-word cycle: random direction every 3 s -->
+<script>
+(function(){
+    var words = document.querySelectorAll('.bw');
+    if (!words.length) return;
+
+    var dirs = ['left','right','top','bottom','rotL','rotR','pop','drop','skew','blur','elastic'];
+
+    function randDir() {
+        return dirs[Math.floor(Math.random() * dirs.length)];
+    }
+
+    function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
+        return arr;
+    }
+
+    function fire() {
+        var picked = [];
+        for (var i = 0; i < words.length; i++) picked.push(randDir());
+        // ensure at least two different directions for visual variety
+        if (new Set(picked).size < 2) {
+            picked[0] = randDir();
+            picked[1] = randDir();
+        }
+        // shuffle for extra randomness
+        picked = shuffle(picked);
+
+        for (var i = 0; i < words.length; i++) {
+            var w = words[i];
+            // remove any existing direction class
+            w.className = w.className.replace(/\bbw--\S+/g, '');
+            // kill currently-running animation
+            w.style.animation = 'none';
+            // force reflow
+            void w.offsetWidth;
+            // add new direction + re-trigger animation via inline style
+            w.classList.add('bw--' + picked[i]);
+            // stagger each word a bit
+            var delay = 0.05 * i + 0.1;
+            w.style.animation =
+                'bw-in-' + picked[i] + ' 0.7s cubic-bezier(0.34,1.56,0.64,1) ' +
+                delay + 's both';
+        }
+    }
+
+    // initial fire (override the static classes)
+    fire();
+
+    // repeat every 3 s
+    setInterval(fire, 3000);
+})();
 </script>
