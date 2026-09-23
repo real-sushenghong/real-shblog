@@ -1,0 +1,40 @@
+# Blog tooltip Layer 3 links
+# Each entry defines a clickable link shown under its category column.
+# category must match a taxonomy term name (e.g. "ai-engineering").
+# url is a relative path; relLangURL is applied in the template.
+# title and description support zh/en keys for bilingual display.
+- title:
+    en: "AI Agent Building Guide"
+    zh: "AI 智能体构建指南"
+  description:
+    en: "AI infrastructure, LLM deployment, and Agent runtime practices"
+    zh: "AI 云原生基础设施实践、LLM 推理部署与 Agent 运行时设计"
+  url: "/posts/hello-world/"
+  category: "ai-engineering"
+
+- title:
+    en: "Kubernetes Optimization"
+    zh: "Kubernetes 优化实战"
+  description:
+    en: "GPU scheduling, DRA, and cluster elasticity in production"
+    zh: "KubeCon 2026 演讲实录：GPU 调度、DRA 与集群弹性"
+  url: "/posts/kubernetes-optimization/"
+  category: "cloud-native"
+
+- title:
+    en: "Service Mesh Introduction"
+    zh: "Service Mesh 入门"
+  description:
+    en: "Envoy, Gateway API, and zero-trust service mesh"
+    zh: "Envoy、Gateway API 与零信任服务网格"
+  url: "/posts/service-mesh-intro/"
+  category: "cloud-native"
+
+- title:
+    en: "Daily Thoughts"
+    zh: "个人思考"
+  description:
+    en: "Travel notes, observations, and life reflections"
+    zh: "日常旅行和所见所闻的积累"
+  url: "/posts/daily-thoughts/"
+  category: "other"
