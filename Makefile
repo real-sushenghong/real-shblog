@@ -49,8 +49,8 @@ help:
 	@echo "  make mod-graph              Show Hugo Module dependency graph"
 	@echo ""
 	@echo "Git:"
-	@echo "  make git-status             Show Git status"
-	@echo "  make git-log                Show recent Git commits"
+	@echo "  make gs                     Show Git status"
+	@echo "  make glo                    Show recent Git commits"
 	@echo "  make deploy                 Build and push current branch"
 	@echo ""
 	@echo "Examples:"
@@ -143,11 +143,11 @@ mod-graph:
 # Git
 # ============================================================
 
-git-status:
+gs:
 	@echo "==> Git status:"
 	@git status
 
-git-log:
+gl:
 	@echo "==> Recent commits:"
 	@git log --oneline --decorate -10
 

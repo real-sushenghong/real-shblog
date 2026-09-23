@@ -8,9 +8,13 @@
 {{- $aboutHintDescription := i18n "about_hint_description" -}}
 {{- $siteBasePath := (urls.Parse site.BaseURL).Path | strings.TrimSuffix "/" -}}
 {{- $searchPages := slice -}}
-{{- range site.RegularPages -}}{{- $searchPages = $searchPages | append (dict "title" .Title "url" .RelPermalink
-"description" .Description "content" .Plain) -}}{{- end -}}
+{{- range site.RegularPages -}}{{- $searchPages = $searchPages | append (dict "title" .Title "url" .RelPermalink "description" .Description "content" .Plain) -}}{{- end -}}
 {{- $searchIndex := $searchPages | jsonify | safeHTML -}}
+{{- $currentLang := site.Language.Lang -}}
+{{- $langPrefix := "" -}}
+{{- if ne $currentLang "en" -}}
+  {{- $langPrefix = printf "/%s" $currentLang -}}
+{{- end -}}
 
 <header class="site-header">
     <div class="site-header-inner">
@@ -21,8 +25,14 @@
 
         <nav class="main-nav" aria-label="{{ $mainNavigationLabel }}">
             {{ range site.Menus.main }}
-            {{- $menuPath := strings.TrimPrefix (strings.TrimPrefix .URL $siteBasePath) "/" -}}
-            <a href="{{ $menuPath | relLangURL }}" class="nav-item{{ if eq .Params.icon "user" }} nav-item--about{{ end }}">
+            {{- $menuURL := .URL -}}
+            {{- if eq .Params.icon "home" -}}
+                {{- $menuURL = site.Home.RelPermalink -}}
+            {{- else -}}
+                {{- $menuPath := strings.TrimPrefix $siteBasePath .URL -}}
+                {{- $menuURL = printf "%s%s%s" $siteBasePath $langPrefix $menuPath -}}
+            {{- end -}}
+            <a href="{{ $menuURL }}" class="nav-item{{ if eq .Params.icon "user" }} nav-item--about{{ end }}">
                 {{ if eq .Params.icon "home" }}
                 <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m3 10 9-7 9 7"></path>

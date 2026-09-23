@@ -1,5 +1,3 @@
-{{- $postsURL := "posts/" | relLangURL -}}
-
 <section class="hero">
 
     <div class="hero-content">
@@ -18,7 +16,7 @@
 
         <div class="hero-actions">
 
-            <a href="{{ $postsURL }}" class="hero-button primary">
+            <a href="{{ "posts/" | relLangURL }}" class="hero-button primary">
                 {{ i18n "read_articles" }}
             </a>
 

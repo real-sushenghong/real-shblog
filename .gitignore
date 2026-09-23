@@ -9,4 +9,5 @@
 # OS and editor files
 .DS_Store
 .vscode/
+.idea/
 *.swp
