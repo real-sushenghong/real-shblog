@@ -92,6 +92,10 @@ enableGitInfo = true
 [pagination]
   pagerSize = 10
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 [markup]
   [markup.highlight]
     noClasses = false

@@ -1,0 +1,77 @@
+{{ define "main" }}
+<main class="category-page">
+    <div class="category-page-inner">
+
+        <nav class="category-breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ site.Home.RelPermalink }}" class="breadcrumb-link">
+                <svg class="breadcrumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 10 9-7 9 7"></path>
+                    <path d="M5 9v11h14V9"></path>
+                    <path d="M9 20v-6h6v6"></path>
+                </svg>
+                <span>{{ i18n "breadcrumb_home" }}</span>
+            </a>
+            <span class="breadcrumb-sep" aria-hidden="true">
+                <svg class="breadcrumb-chevron" viewBox="0 0 24 24">
+                    <path d="m9 6 6 6-6 6"></path>
+                </svg>
+            </span>
+            <span class="breadcrumb-current">
+                <svg class="breadcrumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                </svg>
+                <span>{{ i18n "breadcrumb_categories" }}</span>
+            </span>
+            <span class="breadcrumb-sep" aria-hidden="true">
+                <svg class="breadcrumb-chevron" viewBox="0 0 24 24">
+                    <path d="m9 6 6 6-6 6"></path>
+                </svg>
+            </span>
+            <span class="breadcrumb-current" aria-current="page">
+                <svg class="breadcrumb-icon breadcrumb-icon--current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2a8 8 0 0 0-8 8c0 3.5 2 6.5 4.8 8L12 22l3.2-4A8 8 0 0 0 12 2z"></path>
+                    <circle cx="12" cy="10" r="2"></circle>
+                </svg>
+                <span>{{ .Title }}</span>
+            </span>
+        </nav>
+
+        <header class="category-header">
+            <h1 class="category-title">{{ .Title }}</h1>
+            {{ with .Description }}
+            <p class="category-desc">{{ . }}</p>
+            {{ end }}
+        </header>
+
+        <div class="category-post-grid">
+            {{ range .Pages }}
+            <article class="category-post-card">
+                <time class="category-post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format "2006-01-02" }}
+                </time>
+                <h2 class="category-post-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                {{ with .Description }}
+                <p class="category-post-summary">{{ . }}</p>
+                {{ end }}
+                <div class="category-post-tags">
+                    {{ with .Params.tags }}
+                    {{ range . }}
+                    <span class="category-post-tag">{{ . }}</span>
+                    {{ end }}
+                    {{ end }}
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        {{ if lt (len .Pages) 1 }}
+        <div class="category-empty">
+            <p>{{ i18n "search_no_results" }}</p>
+        </div>
+        {{ end }}
+
+    </div>
+</main>
+{{ end }}

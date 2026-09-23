@@ -6,6 +6,9 @@ description: "我的技术博客正式开始。"
 tags:
   - Hugo
   - Infrastructure
+categories:
+  - ai-engineering
+  - cloud-native
 ---
 
 # 你好，世界
