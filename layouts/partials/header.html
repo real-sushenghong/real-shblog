@@ -19,7 +19,7 @@
 <header class="site-header">
     <div class="site-header-inner">
         <a class="brand" href="{{ site.Home.RelPermalink }}">
-            <span class="brand-name">Sheng Hone</span>
+            <span class="brand-name">Real ShengHong  Allegedly</span>
             <span class="brand-tag"><span class="brand-tag-text">AI-Native Infrastructure Engineer</span></span>
         </a>
 
@@ -84,9 +84,7 @@
                         <path d="M12 3a15 15 0 0 1 0 18"></path>
                         <path d="M12 3a15 15 0 0 0 0 18"></path>
                     </svg>
-                    <span>
-                        {{ if eq site.Language.Lang "zh" }}EN{{ else }}中文{{ end }}
-                    </span>
+                    <span class="lang-code">{{ site.Language.Lang }}</span>
                 </button>
 
                 <button class="theme-toggle icon-button" type="button" aria-label="{{ $themeSwitchLabel }}">

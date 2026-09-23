@@ -1,7 +1,7 @@
 baseURL = 'https://real-sushenghong.github.io/real-shblog/'
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
-title = 'Sheng Hone | AI-Native Infrastructure Engineer'
+title = 'Real ShengHong | AI-Native Infrastructure Engineer'
 
 enableRobotsTXT = true
 enableGitInfo = true
