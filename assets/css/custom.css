@@ -762,28 +762,19 @@ html[data-theme="dark"] .site-header--home {
     transition-delay: 0.4s;
 }
 
-/* 首页弹框透明背景：发现(绿调) 和 技术方向(紫调) */
+/* 首页弹框透明背景：与 about-tooltip 一致的中性风格 */
 .site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip,
 .site-header--home .nav-item-wrapper.nav-item--blog .blog-tooltip {
-    background: rgba(15, 20, 40, 0.40) !important;
+    background: rgba(15, 20, 40, 0.35) !important;
     backdrop-filter: blur(30px) !important;
     -webkit-backdrop-filter: blur(30px) !important;
+    border-color: var(--header-border) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
 }
 html:not([data-theme="dark"]) .site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip,
 html:not([data-theme="dark"]) .site-header--home .nav-item-wrapper.nav-item--blog .blog-tooltip {
-    background: rgba(255, 255, 255, 0.45) !important;
-}
-
-/* 发现弹框绿色调 */
-.site-header--home .nav-item-wrapper.nav-item--blog .blog-tooltip {
-    border-color: rgba(67, 160, 71, 0.55) !important;
-    box-shadow: 0 0 28px rgba(67, 160, 71, 0.18), 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* 技术方向弹框紫色调 */
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip {
-    border-color: rgba(124, 77, 255, 0.55) !important;
-    box-shadow: 0 0 28px rgba(124, 77, 255, 0.18), 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    background: rgba(255, 255, 255, 0.40) !important;
+    border-color: var(--header-border) !important;
 }
 
 .blog-pill {
@@ -942,7 +933,7 @@ html:not([data-theme="dark"]) .site-header--home .nav-item-wrapper.nav-item--blo
 }
 
 .blog-column-header--other {
-    color: #78909c;
+    color: #546e7a;
 }
 
 .blog-column-header--focus {
@@ -1001,8 +992,22 @@ html:not([data-theme="dark"]) .site-header--home .nav-item-wrapper.nav-item--blo
     width: 12px;
     height: 12px;
     flex-shrink: 0;
-    color: #7c4dff;
+    color: inherit;
     margin-right: 5px;
+}
+
+/* 每列图标颜色匹配列标题色调，不再全部紫色 */
+.blog-column:has(.blog-column-header--ai) .blog-column-post-icon {
+    color: #7c4dff;
+}
+.blog-column:has(.blog-column-header--cn) .blog-column-post-icon {
+    color: #00bcd4;
+}
+.blog-column:has(.blog-column-header--more) .blog-column-post-icon {
+    color: #ff8f00;
+}
+.blog-column:has(.blog-column-header--other) .blog-column-post-icon {
+    color: #546e7a;
 }
 
 .blog-column-post-title {
