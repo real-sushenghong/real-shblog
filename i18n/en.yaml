@@ -79,7 +79,7 @@ perspective_longterm_title: "Long-termism"
 perspective_longterm_desc: "Developer ecosystems are built through long-form writing, continuous activities, tooling, and accumulated trust."
 
 profile_practice_title: "Practice Focus"
-profile_intro: "Hi, I'm Sheng Hong — a Cloud Native SRE / DevOps Engineer. Years of hands-on experience in IT operations, cloud native SRE, and platform engineering across complex heterogeneous infrastructure: bare metal, VMs, public cloud, hybrid cloud, and private AI deployments for finance and internet clients. My focus is on cloud native infrastructure, automated ops, platform engineering, and AI infrastructure — Kubernetes, containers, distributed systems, and engineering for AI workloads. I care deeply about making complex infrastructure stable, maintainable, and evolvable through engineering, automation, and observability."
+profile_intro: "Hi, I'm Sheng Hong. My work focuses on cloud native infrastructure, automated operations, platform engineering, and AI infrastructure — Kubernetes, containers, distributed systems, and the engineering of AI workloads. I care deeply about making complex infrastructure stable, maintainable, and evolvable through engineering, automation, and observability."
 profile_practice_cloud_title: "Cloud Native Platform Engineering"
 profile_practice_cloud_desc: ": turning complex infrastructure into governable, self-service, reusable platform capabilities."
 profile_practice_ai_title: "AI Infrastructure & GPU Governance"

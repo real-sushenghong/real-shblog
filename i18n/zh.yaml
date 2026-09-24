@@ -79,7 +79,7 @@ perspective_longterm_title: "长期主义"
 perspective_longterm_desc: "开发者生态需要长期写作、持续活动、工具建设和信任积累共同支撑。"
 
 profile_practice_title: "实践主线"
-profile_intro: "你好，我是升宏，一名云原生 SRE / 运维开发工程师，我的工作主要聚焦于云原生基础设施、自动化运维、平台工程与 AI 基础设施，关注 Kubernetes、容器、分布式系统以及 AI 工作负载的工程化落地。我更关注如何通过工程化、自动化和可观测性，让复杂基础设施变得更加稳定、可维护、可演进。"
+profile_intro: "你好，我是升宏，我的工作主要聚焦于云原生基础设施、自动化运维、平台工程与 AI 基础设施，关注 Kubernetes、容器、分布式系统以及 AI 工作负载的工程化落地。我更关注如何通过工程化、自动化和可观测性，让复杂基础设施变得更加稳定、可维护、可演进。"
 profile_practice_cloud_title: "云原生平台工程"
 profile_practice_cloud_desc: "：把复杂基础设施做成可治理、可自助、可复用的平台能力。"
 profile_practice_ai_title: "AI 基础设施与 GPU 治理"
