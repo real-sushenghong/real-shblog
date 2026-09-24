@@ -11,7 +11,7 @@
   </div>
 
   <div class="directions-grid">
-    {{- range hugo.Data.focus_links -}}
+    {{- range $.Site.Data.focus_links -}}
     <a href="{{ .url | relLangURL }}" class="directions-card">
       <span class="directions-card-icon">
         {{ partial "icon.html" .icon }}

@@ -102,7 +102,7 @@
 
 {{- /* --- Title 节点（从 blog_links.yaml 自动读取，新增 title 自动识别） --- */ -}}
 {{- $titleNodes := slice -}}
-{{- range hugo.Data.blog_links -}}
+{{- range $.Site.Data.blog_links -}}
   {{- /* 从 URL 或 title.en 推导 slug，用于 post series 匹配 */ -}}
   {{- $isSeries := strings.HasPrefix .url "/series/" -}}
   {{- $slug := "" -}}
