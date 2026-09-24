@@ -1,0 +1,115 @@
+<section class="section perspectives">
+
+    <div class="perspectives-row">
+
+        <div class="perspectives-left">
+            <div class="section-header">
+                <h2>{{ i18n "perspectives_title" }}</h2>
+                <p class="perspectives-intro">{{ i18n "perspectives_intro" }}</p>
+            </div>
+
+            <div class="perspectives-grid">
+                <article class="perspective-card perspective-card--purple">
+                    <span class="perspective-card-index">01</span>
+                    <h3>{{ i18n "perspective_collab_title" }}</h3>
+                    <p>{{ i18n "perspective_collab_desc" }}</p>
+                </article>
+                <article class="perspective-card perspective-card--cyan">
+                    <span class="perspective-card-index">02</span>
+                    <h3>{{ i18n "perspective_dx_title" }}</h3>
+                    <p>{{ i18n "perspective_dx_desc" }}</p>
+                </article>
+                <article class="perspective-card perspective-card--amber">
+                    <span class="perspective-card-index">03</span>
+                    <h3>{{ i18n "perspective_depth_title" }}</h3>
+                    <p>{{ i18n "perspective_depth_desc" }}</p>
+                </article>
+                <article class="perspective-card perspective-card--green">
+                    <span class="perspective-card-index">04</span>
+                    <h3>{{ i18n "perspective_system_title" }}</h3>
+                    <p>{{ i18n "perspective_system_desc" }}</p>
+                </article>
+                <article class="perspective-card perspective-card--pink">
+                    <span class="perspective-card-index">05</span>
+                    <h3>{{ i18n "perspective_feedback_title" }}</h3>
+                    <p>{{ i18n "perspective_feedback_desc" }}</p>
+                </article>
+                <article class="perspective-card perspective-card--indigo">
+                    <span class="perspective-card-index">06</span>
+                    <h3>{{ i18n "perspective_longterm_title" }}</h3>
+                    <p>{{ i18n "perspective_longterm_desc" }}</p>
+                </article>
+            </div>
+        </div>
+
+        <aside class="profile-card">
+            <div class="profile-top">
+                <div class="profile-avatar">
+                    <img src="{{ "personal_photo.png" | relURL }}" alt="Profile" width="180" height="180" loading="eager">
+                </div>
+                <p class="profile-intro">{{ i18n "profile_intro" }}</p>
+            </div>
+
+            <hr class="profile-divider">
+
+            <div class="profile-tags">
+                <span class="profile-tag profile-tag--purple">{{ i18n "profile_tag_ai" }}</span>
+                <span class="profile-tag profile-tag--cyan">{{ i18n "profile_tag_hpc" }}</span>
+                <span class="profile-tag profile-tag--amber">{{ i18n "profile_tag_cn" }}</span>
+                <span class="profile-tag profile-tag--green">{{ i18n "profile_tag_os" }}</span>
+            </div>
+
+            <hr class="profile-divider">
+
+            <ul class="profile-practice">
+                <li><strong>{{ i18n "profile_practice_cloud_title" }}</strong>{{ i18n "profile_practice_cloud_desc" }}</li>
+                <li><strong>{{ i18n "profile_practice_ai_title" }}</strong>{{ i18n "profile_practice_ai_desc" }}</li>
+                <li><strong>{{ i18n "profile_practice_obs_title" }}</strong>{{ i18n "profile_practice_obs_desc" }}</li>
+                <li><strong>{{ i18n "profile_practice_devops_title" }}</strong>{{ i18n "profile_practice_devops_desc" }}</li>
+            </ul>
+
+            <hr class="profile-divider">
+        </aside>
+
+    </div>
+
+</section>
+
+<section class="section focus-areas">
+
+    <div class="section-header focus-section-header">
+        <h2>{{ i18n "focus_title" }}</h2>
+        <p class="focus-intro">{{ i18n "focus_intro" }}</p>
+    </div>
+
+    <div class="focus-grid">
+        <article class="focus-card focus-card--purple">
+            <div class="focus-icon focus-icon--purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="10" y1="17.5" x2="14" y2="17.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/><line x1="17.5" y1="10" x2="17.5" y2="14"/></svg>
+            </div>
+            <div class="focus-content">
+                <h3>{{ i18n "focus_ai_title" }}</h3>
+                <p>{{ i18n "focus_ai_desc" }}</p>
+            </div>
+        </article>
+        <article class="focus-card focus-card--cyan">
+            <div class="focus-icon focus-icon--cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 0 1 8.66 5"/><path d="M12 2a10 10 0 0 0-8.66 5"/><path d="M3.34 17A10 10 0 0 1 12 22"/><path d="M20.66 17A10 10 0 0 0 12 22"/><path d="M2 12h5"/><path d="M17 12h5"/><path d="M5.5 5.5l3.5 3.5"/><path d="M15 15l3.5 3.5"/><path d="M15 9l3.5-3.5"/><path d="M5.5 18.5L9 15"/></svg>
+            </div>
+            <div class="focus-content">
+                <h3>{{ i18n "focus_cloud_title" }}</h3>
+                <p>{{ i18n "focus_cloud_desc" }}</p>
+            </div>
+        </article>
+        <article class="focus-card focus-card--amber">
+            <div class="focus-icon focus-icon--amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </div>
+            <div class="focus-content">
+                <h3>{{ i18n "focus_os_title" }}</h3>
+                <p>{{ i18n "focus_os_desc" }}</p>
+            </div>
+        </article>
+    </div>
+
+</section>
