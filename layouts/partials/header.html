@@ -142,7 +142,7 @@
                                 <span class="blog-column-header-label">{{ $catTitle }}</span>
                             </span>
                             <div class="blog-column-posts">
-                                {{- range where hugo.Data.blog_links "category" $catName -}}
+                                {{- range where $.Site.Data.blog_links "category" $catName -}}
                                 <a href="{{ .url | relLangURL }}" class="blog-column-post">
                                     {{ partial "icon.html" .icon }}
                                     <span class="blog-column-post-title">{{ index .title $currentLang }}</span>
@@ -178,7 +178,7 @@
                                 <span class="blog-column-header-label">{{ i18n "blog_hint_other" }}</span>
                             </span>
                             <div class="blog-column-posts">
-                                {{- range where hugo.Data.blog_links "category" "other" -}}
+                                {{- range where $.Site.Data.blog_links "category" "other" -}}
                                 <a href="{{ .url | relLangURL }}" class="blog-column-post">
                                     {{ partial "icon.html" .icon }}
                                     <span class="blog-column-post-title">{{ index .title $currentLang }}</span>
@@ -203,7 +203,7 @@
                                 <span class="blog-column-header-label">{{ i18n "focus_hint_title" }}</span>
                             </span>
                             <div class="blog-column-posts">
-                                {{- range hugo.Data.focus_links -}}
+                                {{- range $.Site.Data.focus_links -}}
                                 <a href="{{ .url | relLangURL }}" class="blog-column-post">
                                     {{ partial "icon.html" .icon }}
                                     <span class="blog-column-post-title">{{ index .title $currentLang }}</span>
