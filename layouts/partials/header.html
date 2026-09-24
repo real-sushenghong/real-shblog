@@ -21,7 +21,8 @@
 
 <header class="site-header{{ if .IsHome }} site-header--home{{ end }}">
     <div class="site-header-inner">
-        <a class="brand" href="{{ site.Home.RelPermalink }}">
+        <div class="brand">
+            <img class="brand-logo" src="{{ "goldie-400x400.jpg" | relURL }}" alt="" width="32" height="32" loading="eager">
             <span class="brand-name">Real ShengHong  Allegedly</span>
             <span class="brand-tag">
     <span class="bw bw--left" style="--i:0">AI</span>
@@ -29,7 +30,7 @@
     <span class="bw bw--right" style="--i:2">Infrastructure</span>
     <span class="bw bw--top" style="--i:3">Engineer</span>
 </span>
-        </a>
+        </div>
 
         <nav class="main-nav" aria-label="{{ $mainNavigationLabel }}">
             {{ range site.Menus.main }}
@@ -279,8 +280,7 @@
     (function () {
         const root = document.documentElement;
         const savedTheme = localStorage.getItem("theme");
-        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const theme = savedTheme || (systemDark ? "dark" : "light");
+        const theme = savedTheme || "light";
 
         root.setAttribute("data-theme", theme);
 
