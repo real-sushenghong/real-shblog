@@ -9,6 +9,7 @@ tags:
   - Envoy
 categories:
   - cloud-native
+series: envoy-basics
 ---
 
 # Service Mesh & Envoy in Practice

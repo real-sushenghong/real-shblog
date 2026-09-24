@@ -21,11 +21,18 @@ enableGitInfo = true
           icon = "home"
 
       [[languages.en.menu.main]]
-        name = "Blog"
-        url = "/posts/"
+        name = "Discover"
+        url = "/categories/"
         weight = 20
         [languages.en.menu.main.params]
           icon = "book"
+
+      [[languages.en.menu.main]]
+        name = "Blog"
+        url = "/posts/"
+        weight = 22
+        [languages.en.menu.main.params]
+          icon = "search"
 
       [[languages.en.menu.main]]
         name = "Projects"
@@ -62,11 +69,18 @@ enableGitInfo = true
           icon = "home"
 
       [[languages.zh.menu.main]]
-        name = "博客"
-        url = "/posts/"
+        name = "发现"
+        url = "/categories/"
         weight = 20
         [languages.zh.menu.main.params]
           icon = "book"
+
+      [[languages.zh.menu.main]]
+        name = "博客"
+        url = "/posts/"
+        weight = 22
+        [languages.zh.menu.main.params]
+          icon = "search"
 
       [[languages.zh.menu.main]]
         name = "项目"

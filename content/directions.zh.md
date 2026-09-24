@@ -3,6 +3,7 @@ title: "技术方向"
 date: 2026-09-22
 draft: false
 translationKey: directions-zh
+layout: directions
 ---
 
 ## 技术方向

@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{- $currentLang := .Site.Language.Lang -}}
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  <div class="directions-grid">
+    {{- range hugo.Data.focus_links -}}
+    <a href="{{ .url | relLangURL }}" class="directions-card">
+      <span class="directions-card-icon">
+        {{ partial "icon.html" .icon }}
+      </span>
+      <span class="directions-card-title">{{ index .title $currentLang }}</span>
+      {{- with index .description $currentLang -}}
+        {{- if ne . "" -}}
+      <span class="directions-card-desc">{{ . }}</span>
+        {{- end -}}
+      {{- end -}}
+    </a>
+    {{- end -}}
+  </div>
+</article>
+
+{{ end }}

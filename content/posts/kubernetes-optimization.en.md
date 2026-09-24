@@ -8,6 +8,7 @@ tags:
   - Performance
 categories:
   - cloud-native
+series: kubernetes-tutorial
 ---
 
 # Kubernetes Performance Optimization

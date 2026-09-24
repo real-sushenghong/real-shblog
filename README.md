@@ -139,3 +139,150 @@ hugo mod tidy
 ## License
 
 Content and code are provided for personal and educational purposes unless otherwise specified.
+
+---
+
+## 神经网络分类关系图
+
+`/categories/` 页面展示一个以 **shenghong** 为核心的三级力导向神经网络图，动态反映博客的分类、系列与文章之间的关联关系。
+
+### 体系架构
+
+```
+                    Center (shenghong)
+                   /      |      \      \
+                  /       |       \      \
+          Category   Category   Category  Resources
+          /  |  \      / | \       |         \
+         /   |   \    /  |  \      |          \
+     Title Title Title Title Title Title     Title
+       |            |       |
+     Post         Post    Post ...
+```
+
+**四层节点：**
+
+| 层级 | group 值 | 节点大小 | 颜色 | 说明 |
+|------|----------|---------|------|------|
+| 中心 | `center` | 28px | 金色 `#f0a040` | 固定画布中央，不可拖拽 |
+| 分类 | 数字 `"1"`~`"8"` | 按文章数动态 | 分区色 | 来自 Hugo Taxonomy categories |
+| 系列标题 | `title` | 10px | 继承父分类色 | 来自 `data/blog_links.yaml` |
+| 文章 | `post` | 6px | 继承父分类色 | 来自 `content/posts/` |
+
+### 数据来源
+
+| 节点类型 | 数据源 | 生成方式 |
+|----------|--------|---------|
+| 中心 | 硬编码 | `id: "shenghong"`，固定在模板中 |
+| 分类 | `.Site.Taxonomies.categories` | 遍历 Hugo 分类 taxonomy，自动生成 |
+| Resources | 手动定义 | 不在 taxonomy 中，模板中单独添加（`id: "resources"`） |
+| 系列标题 | `data/blog_links.yaml` | 遍历 `hugo.Data.blog_links`，自动生成 |
+| 文章 | `.Site.RegularPages` (section `posts`) | 遍历所有已发布文章，自动生成 |
+
+### 连线逻辑
+
+| 连线 | source → target | 生成规则 |
+|------|----------------|---------|
+| 中心 → 分类 | `shenghong` → 每个 category | 固定，每个分类一条（含 resources） |
+| 分类 → 系列标题 | category → title | 按 `blog_links.yaml` 中的 `category` 字段匹配 |
+| 系列标题 → 文章 | title → post | 基于文章 front matter 的 `series` 字段精确匹配 |
+| 分类共现 | category ↔ category | 分类在同一篇文章中共现的次数（原有逻辑） |
+
+### 文章与系列标题的精确关联（series 字段）
+
+每篇文章的 front matter 需要指定 `series` 字段：
+
+```yaml
+# content/posts/your-post.en.md
+---
+title: "Your Post Title"
+categories:
+  - cloud-native
+series: kubernetes-tutorial   # 关联到 blog_links.yaml 中的对应标题
+---
+```
+
+**匹配规则：**
+
+1. 从 `blog_links.yaml` 中每个条目的 `url` 或 `title.en` 推导出 `slug`：
+   - URL 是 `/series/xxx/` → slug = `xxx`
+   - URL 是 `/posts/` → slug = `title.en` 的小写 + 空格转连字符
+2. 文章的 `series` 字段与 title 的 `slug` 精确匹配后建立连线
+
+**示例：**
+
+| 文章 series 值 | 匹配到的 blog_links 标题 | 推导方式 |
+|---------------|------------------------|---------|
+| `ai-agent-building-guide` | AI Agent Building Guide | url `/series/ai-agent-building-guide/` → slug = `ai-agent-building-guide` |
+| `kubernetes-tutorial` | Kubernetes Tutorial | url `/posts/` → slug = `"kubernetes tutorial".lower()` → `kubernetes-tutorial` |
+| `service-mesh-intro` | Service Mesh Introduction | url `/series/service-mesh-intro/` → slug = `service-mesh-intro` |
+
+### 自动识别机制
+
+**新增系列标题：** 只需在 `data/blog_links.yaml` 中添加条目，无需修改任何模板代码：
+
+```yaml
+- title:
+    en: "New Series"
+    zh: "新系列"
+  icon: "cpu"
+  url: "/series/new-series/"
+  category: "ai-engineering"
+```
+
+模板自动遍历 `hugo.Data.blog_links`，新增条目自动生成 title 节点和 category→title 连线。
+
+**新增文章：** 只需在文章 front matter 中添加 `series` 字段：
+
+```yaml
+series: new-series   # 对应 blog_links.yaml 中推导出的 slug
+```
+
+模板自动遍历 `.Site.RegularPages`，新文章自动生成 post 节点和 title→post 连线。
+
+### 技术实现
+
+**模板文件：** `layouts/categories/list.html`
+
+**可视化库：** D3.js v7（CDN 加载）
+
+**关键 JS 函数：**
+
+| 函数 | 作用 |
+|------|------|
+| `getNodeGroup(d)` | 获取节点的实际颜色组（title/post 继承父分类） |
+| `getNodeColor(d)` | 获取节点颜色（center 返回金色） |
+| `nodeRadius(d)` | 根据节点类型返回不同半径 |
+| `highlightNode(d)` | 悬停高亮：当前节点+邻居高亮，其余暗淡 |
+| `resetHighlight()` | 恢复所有节点和连线到默认状态 |
+
+**力模拟参数（按层级不同）：**
+
+| 层级 | 连线距离 | 电荷斥力 |
+|------|---------|---------|
+| center → category | 200px | -600 |
+| category → title | 120px | -280 |
+| title → post | 80px | -150 / -80 |
+
+**交互：**
+- 拖拽节点（中心节点除外）
+- 点击节点跳转到对应页面
+- 悬停高亮关联节点和连线
+- 滚轮缩放、拖拽平移
+- R 键重置视图
+
+### 维护指南
+
+**新增系列：**
+1. 编辑 `data/blog_links.yaml`，在对应 category 下添加条目
+2. （可选）创建 `content/series/<slug>/_index.en.md` 和 `_index.zh.md`
+3. 更新 `layouts/partials/icon.html` 添加新图标（如需要）
+
+**新增文章并关联到系列：**
+1. 在文章 front matter 中设置 `categories`（至少一个）
+2. 在文章 front matter 中设置 `series`（对应 blog_links 中某条目的 slug）
+3. 文章自动出现在图中，并连线到对应系列标题
+
+**新增图标：**
+1. 在 `layouts/partials/icon.html` 中添加 `else if eq $name "新图标名"` 分支
+2. 在 `data/blog_links.yaml` 对应条目中设置 `icon: "新图标名"`

@@ -8,7 +8,6 @@
 {{- $aboutHintDescription := i18n "about_hint_description" -}}
 {{- $contactHintTitle := i18n "contact_hint_title" -}}
 {{- $contactHintDescription := i18n "contact_hint_description" -}}
-{{- $blogHintTitle := i18n "blog_hint_title" -}}
 {{- $siteBasePath := (urls.Parse site.BaseURL).Path | strings.TrimSuffix "/" -}}
 {{- $searchPages := slice -}}
 {{- range site.RegularPages -}}{{- $searchPages = $searchPages | append (dict "title" .Title "url" .RelPermalink "description" .Description "content" .Plain) -}}{{- end -}}
@@ -47,12 +46,20 @@
             {{- if eq .Params.icon "book" -}}
             <div class="nav-item-wrapper nav-item--blog">
             {{- end -}}
+            {{- if eq .Params.icon "compass" -}}
+            <div class="nav-item-wrapper nav-item--focus">
+            {{- end -}}
             <a href="{{ $menuURL }}" class="nav-item{{ if eq .Params.icon "user" }} nav-item--about-link{{ end }}">
                 {{ if eq .Params.icon "home" }}
                 <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m3 10 9-7 9 7"></path>
                     <path d="M5 9v11h14V9"></path>
                     <path d="M9 20v-6h6v6"></path>
+                </svg>
+                {{ else if eq .Params.icon "search" }}
+                <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
                 </svg>
                 {{ else if eq .Params.icon "book" }}
                 <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -112,15 +119,6 @@
                 {{ end }}
                 {{ if eq .Params.icon "book" }}
                 <span class="blog-tooltip" role="tooltip">
-                    <span class="tooltip-title">
-                        <svg class="tooltip-icon tooltip-icon--blog" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v17H7.5A2.5 2.5 0 0 0 5 21.5v-17Z"></path>
-                            <path d="M5 19.5A2.5 2.5 0 0 1 7.5 17H20"></path>
-                            <path d="M9 6h7M9 10h5"></path>
-                        </svg>
-                        <strong>{{ $blogHintTitle }}</strong>
-                    </span>
-                    <span class="tooltip-separator" role="separator"></span>
                     <div class="blog-columns">
                         {{- range $catName, $_ := site.Taxonomies.categories -}}
                         {{- $catKey := replace $catName "-" "_" -}}
@@ -146,6 +144,7 @@
                             <div class="blog-column-posts">
                                 {{- range where hugo.Data.blog_links "category" $catName -}}
                                 <a href="{{ .url | relLangURL }}" class="blog-column-post">
+                                    {{ partial "icon.html" .icon }}
                                     <span class="blog-column-post-title">{{ index .title $currentLang }}</span>
                                     <span class="blog-column-post-desc">{{ index .description $currentLang }}</span>
                                 </a>
@@ -161,7 +160,8 @@
                                 <span class="blog-column-header-label">{{ i18n "blog_hint_more" }}</span>
                             </span>
                             <div class="blog-column-posts">
-                                <a href="{{ "posts/hugo-tutorial/" | relLangURL }}" class="blog-column-post">
+                                <a href="{{ "posts/" | relLangURL }}" class="blog-column-post">
+                                    {{ partial "icon.html" "book" }}
                                     <span class="blog-column-post-title">Hugo 教程</span>
                                     <span class="blog-column-post-desc">从零到精通 Hugo 架构</span>
                                 </a>
@@ -180,8 +180,33 @@
                             <div class="blog-column-posts">
                                 {{- range where hugo.Data.blog_links "category" "other" -}}
                                 <a href="{{ .url | relLangURL }}" class="blog-column-post">
+                                    {{ partial "icon.html" .icon }}
                                     <span class="blog-column-post-title">{{ index .title $currentLang }}</span>
                                     <span class="blog-column-post-desc">{{ index .description $currentLang }}</span>
+                                </a>
+                                {{- end -}}
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                {{ end }}
+                {{ if eq .Params.icon "compass" }}
+                <span class="blog-tooltip" role="tooltip">
+                    <div class="blog-columns">
+                        <div class="blog-column blog-column--action">
+                            <span class="blog-column-header blog-column-header--focus">
+                                <svg class="tooltip-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="8"></circle>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                    <path d="m14 10 4-4"></path>
+                                </svg>
+                                <span class="blog-column-header-label">{{ i18n "focus_hint_title" }}</span>
+                            </span>
+                            <div class="blog-column-posts">
+                                {{- range hugo.Data.focus_links -}}
+                                <a href="{{ .url | relLangURL }}" class="blog-column-post">
+                                    {{ partial "icon.html" .icon }}
+                                    <span class="blog-column-post-title">{{ index .title $currentLang }}</span>
                                 </a>
                                 {{- end -}}
                             </div>
@@ -193,6 +218,9 @@
             </div>
             {{- end -}}
             {{- if eq .Params.icon "book" -}}
+            </div>
+            {{- end -}}
+            {{- if eq .Params.icon "compass" -}}
             </div>
             {{- end -}}
             {{ end }}

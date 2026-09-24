@@ -73,6 +73,7 @@ dev:
 	$(HUGO) server \
 		--bind $(HOST) \
 		--port $(PORT) \
+		--baseURL http://localhost:$(PORT)/ \
 		--renderToMemory \
 		--noHTTPCache \
 		--noBuildLock

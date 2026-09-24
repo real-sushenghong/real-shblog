@@ -9,6 +9,7 @@ tags:
 categories:
   - ai-engineering
   - cloud-native
+series: ai-agent-building-guide
 ---
 
 # Hello World
