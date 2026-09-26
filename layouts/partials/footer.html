@@ -1,22 +1,7 @@
-{{- $privacyURL := "privacy/" | relLangURL -}}
-{{- $termsURL := "terms/" | relLangURL -}}
-
 <footer class="site-footer">
     <div class="site-footer-inner">
         <p>
-            © {{ now.Year }} Sheng Hone. {{ i18n "all_rights_reserved" }}
-            <span class="footer-separator">·</span>
-            <a href="{{ $privacyURL }}">
-                {{ i18n "privacy_policy" }}
-            </a>
-            <span class="footer-separator">·</span>
-            <a href="{{ $termsURL }}">
-                {{ i18n "terms_of_use" }}
-            </a>
-            <span class="footer-separator">·</span>
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
-                CC BY 4.0
-            </a>
+            {{ partial "footer_copyright.html" (dict "sep" "footer-separator") }}
         </p>
     </div>
 </footer>

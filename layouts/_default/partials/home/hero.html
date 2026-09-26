@@ -3,19 +3,19 @@
     <div class="hero-inner">
 
         <div class="hero-brand">
-            <img class="hero-avatar" src="{{ "goldie-400x400.jpg" | relURL }}" alt="" width="80" height="80" loading="eager">
+            <img class="hero-avatar" src="{{ "goldie-400x400.jpg" | relURL }}" alt="{{ i18n "hero_name" }}" width="80" height="80" loading="eager">
         </div>
 
         <h1 class="hero-title">
-            Sheng Hong
+            {{ i18n "hero_name" }}
         </h1>
 
         <p class="hero-subtitle">
-            AI Native Infrastructure Engineer
+            {{ i18n "hero_subtitle" }}
         </p>
 
         <p class="hero-tagline">
-            Building the bridge between AI & Cloud Native
+            {{ i18n "hero_tagline" }}
         </p>
 
         <div class="hero-actions">
@@ -23,7 +23,7 @@
                 {{ i18n "read_articles" }}
             </a>
             <a href="{{ "about/" | relLangURL }}" class="hero-btn ghost">
-                {{ if eq .Site.Language.Lang "zh" }}关于我{{ else }}About{{ end }}
+                {{ i18n "hero_about" }}
             </a>
         </div>
 
@@ -31,13 +31,7 @@
 
     <footer class="hero-footer">
         <p>
-            © {{ now.Year }} Sheng Hone. {{ i18n "all_rights_reserved" }}
-            <span class="hero-footer-sep">·</span>
-            <a href="{{ "privacy/" | relLangURL }}">{{ i18n "privacy_policy" }}</a>
-            <span class="hero-footer-sep">·</span>
-            <a href="{{ "terms/" | relLangURL }}">{{ i18n "terms_of_use" }}</a>
-            <span class="hero-footer-sep">·</span>
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+            {{ partial "footer_copyright.html" (dict "sep" "hero-footer-sep") }}
         </p>
     </footer>
 
