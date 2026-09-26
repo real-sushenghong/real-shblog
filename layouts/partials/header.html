@@ -50,7 +50,14 @@
             {{- if eq .Params.icon "compass" -}}
             <div class="nav-item-wrapper nav-item--focus">
             {{- end -}}
-            <a href="{{ $menuURL }}" class="nav-item{{ if eq .Params.icon "user" }} nav-item--about-link{{ end }}">
+            {{- if eq .Params.icon "project" -}}
+            <div class="nav-item-wrapper nav-item--project">
+            {{- end -}}
+            {{- if eq .Params.icon "user" -}}
+            <span class="nav-item nav-item--about-link" tabindex="0">
+            {{- else -}}
+            <a href="{{ $menuURL }}" class="nav-item">
+            {{- end -}}
                 {{ if eq .Params.icon "home" }}
                 <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m3 10 9-7 9 7"></path>
@@ -88,7 +95,11 @@
                 {{ end }}
 
                 <span>{{ .Name }}</span>
+            {{- if eq .Params.icon "user" -}}
+            </span>
+            {{- else -}}
             </a>
+            {{- end -}}
                 {{ if eq .Params.icon "user" }}
                 <span class="about-tooltip" role="tooltip">
                     <span class="blog-pill blog-pill--profile">
@@ -215,6 +226,23 @@
                     </div>
                 </span>
                 {{ end }}
+                {{ if eq .Params.icon "project" }}
+                <span class="blog-tooltip" role="tooltip">
+                    <div class="blog-columns">
+                        <div class="blog-column blog-column--action blog-column--project">
+                            <div class="blog-column-posts">
+                                {{- range site.Data.projects -}}
+                                <a href="{{ .url | relLangURL }}" class="blog-column-post">
+                                    {{ partial "icon.html" .icon }}
+                                    <span class="blog-column-post-title">{{ .title }}</span>
+                                    <span class="blog-column-post-desc">{{ index .description $currentLang }}</span>
+                                </a>
+                                {{- end -}}
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                {{ end }}
             {{- if eq .Params.icon "user" -}}
             </div>
             {{- end -}}
@@ -222,6 +250,9 @@
             </div>
             {{- end -}}
             {{- if eq .Params.icon "compass" -}}
+            </div>
+            {{- end -}}
+            {{- if eq .Params.icon "project" -}}
             </div>
             {{- end -}}
             {{ end }}
