@@ -102,7 +102,7 @@
             {{- end -}}
                 {{ if eq .Params.icon "user" }}
                 <span class="about-tooltip" role="tooltip">
-                    <span class="blog-pill blog-pill--profile">
+                    <a href="{{ $menuURL }}" class="blog-pill blog-pill--profile">
                         <svg class="tooltip-icon tooltip-icon--user" viewBox="0 0 24 24" aria-hidden="true">
                             <circle cx="12" cy="7" r="3"></circle>
                             <path d="M5 21a7 7 0 0 1 14 0"></path>
@@ -113,7 +113,7 @@
                             <path d="M12 8v.01M12 12v4"></path>
                         </svg>
                         <span class="blog-pill-desc">{{ $aboutHintDescription }}</span>
-                    </span>
+                    </a>
                     <span class="tooltip-separator" role="separator"></span>
                     <a href="{{ site.Home.RelPermalink }}contact/" class="blog-pill blog-pill--contact">
                         <svg class="tooltip-icon tooltip-icon--mail" viewBox="0 0 24 24" aria-hidden="true">
