@@ -1,0 +1,279 @@
+- title:
+    en: Go
+    zh: Go
+  description:
+    en: ''
+    zh: ''
+  icon: go
+  url: '#'
+  category: 语言与工具
+- title:
+    en: Python
+    zh: Python
+  description:
+    en: ''
+    zh: ''
+  icon: python
+  url: '#'
+  category: 语言与工具
+- title:
+    en: Shell
+    zh: Shell
+  description:
+    en: ''
+    zh: ''
+  icon: shell
+  url: '#'
+  category: 语言与工具
+- title:
+    en: SQL
+    zh: SQL
+  description:
+    en: ''
+    zh: ''
+  icon: sql
+  url: '#'
+  category: 语言与工具
+- title:
+    en: Linux Basics
+    zh: Linux 基础
+  description:
+    en: ''
+    zh: ''
+  icon: linux
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Performance Analysis
+    zh: 性能分析
+  description:
+    en: ''
+    zh: ''
+  icon: cpu
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Kernel Parameters
+    zh: 内核参数
+  description:
+    en: ''
+    zh: ''
+  icon: layers
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Storage & Filesystem
+    zh: 存储与文件系统
+  description:
+    en: ''
+    zh: ''
+  icon: box
+  url: '#'
+  category: 系统与网络
+- title:
+    en: TCP/IP
+    zh: TCP/IP
+  description:
+    en: ''
+    zh: ''
+  icon: globe
+  url: '#'
+  category: 系统与网络
+- title:
+    en: DNS & HTTP
+    zh: DNS 与 HTTP
+  description:
+    en: ''
+    zh: ''
+  icon: globe
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Network Troubleshooting
+    zh: 网络排障
+  description:
+    en: ''
+    zh: ''
+  icon: compass
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Packet Capture Analysis
+    zh: 抓包分析
+  description:
+    en: ''
+    zh: ''
+  icon: share-2
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Load Balancing
+    zh: 负载均衡
+  description:
+    en: ''
+    zh: ''
+  icon: layers
+  url: '#'
+  category: 系统与网络
+- title:
+    en: Container Networking
+    zh: 容器网络
+  description:
+    en: ''
+    zh: ''
+  icon: box
+  url: '#'
+  category: 系统与网络
+- title:
+    en: System Security Baseline
+    zh: 系统安全基线
+  description:
+    en: ''
+    zh: ''
+  icon: server
+  url: '#'
+  category: 安全
+- title:
+    en: Container & K8s Security
+    zh: 容器与 K8s 安全
+  description:
+    en: ''
+    zh: ''
+  icon: box
+  url: '#'
+  category: 安全
+- title:
+    en: Network Security
+    zh: 网络安全
+  description:
+    en: ''
+    zh: ''
+  icon: globe
+  url: '#'
+  category: 安全
+- title:
+    en: Identity & Permission
+    zh: 身份与权限
+  description:
+    en: ''
+    zh: ''
+  icon: git-branch
+  url: '#'
+  category: 安全
+- title:
+    en: Image & Vulnerability Scanning
+    zh: 镜像与漏洞扫描
+  description:
+    en: ''
+    zh: ''
+  icon: shield
+  url: '#'
+  category: 安全
+- title:
+    en: Compliance
+    zh: 等保合规
+  description:
+    en: ''
+    zh: ''
+  icon: book
+  url: '#'
+  category: 安全
+- title:
+    en: Incident Response
+    zh: 应急响应
+  description:
+    en: ''
+    zh: ''
+  icon: compass
+  url: '#'
+  category: 安全
+- title:
+    en: SLI / SLO / Error Budget
+    zh: SLI / SLO / 错误预算
+  description:
+    en: ''
+    zh: ''
+  icon: grid
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Observability
+    zh: 可观测性
+  description:
+    en: ''
+    zh: ''
+  icon: layout
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Alert Governance
+    zh: 告警治理
+  description:
+    en: ''
+    zh: ''
+  icon: share-2
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Incident & Postmortem
+    zh: 故障处理与复盘
+  description:
+    en: ''
+    zh: ''
+  icon: book-open
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Capacity Planning
+    zh: 容量规划
+  description:
+    en: ''
+    zh: ''
+  icon: layers
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Change Management
+    zh: 变更管理
+  description:
+    en: ''
+    zh: ''
+  icon: git-branch
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Chaos Engineering
+    zh: 混沌工程
+  description:
+    en: ''
+    zh: ''
+  icon: compass
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Platform Engineering
+    zh: 平台工程
+  description:
+    en: ''
+    zh: ''
+  icon: layout
+  url: '#'
+  category: SRE 体系
+- title:
+    en: Automated Ops
+    zh: 自动化运维
+  description:
+    en: ''
+    zh: ''
+  icon: box
+  url: '#'
+  category: SRE 体系
+- title:
+    en: High Availability Architecture
+    zh: 高可用架构
+  description:
+    en: ''
+    zh: ''
+  icon: server
+  url: '#'
+  category: SRE 体系
