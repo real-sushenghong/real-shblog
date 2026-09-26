@@ -827,8 +827,8 @@ html[data-theme="dark"] .site-header--home {
 
 .nav-item-wrapper.nav-item--about .tooltip-icon--user,
 .nav-item-wrapper.nav-item--about .tooltip-icon--mail {
-    width: 12px !important;
-    height: 12px !important;
+    width: 14px !important;
+    height: 14px !important;
 }
 
 .nav-item-wrapper.nav-item--about .blog-pill--profile .tooltip-icon--user {
@@ -1199,8 +1199,8 @@ html[data-theme="dark"] .site-header--home {
 }
 .site-header--home .about-tooltip .tooltip-icon--user,
 .site-header--home .about-tooltip .tooltip-icon--mail {
-    width: 12px !important;
-    height: 12px !important;
+    width: 14px !important;
+    height: 14px !important;
 }
 .site-header--home .about-tooltip .blog-pill--profile .tooltip-icon--user {
     stroke: #e8923d !important;
