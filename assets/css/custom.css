@@ -667,6 +667,33 @@ html[data-theme="dark"] .site-header--home {
     opacity: 0.7;
 }
 
+.nav-item-wrapper.nav-item--about:hover > .nav-item,
+.nav-item-wrapper.nav-item--blog:hover > .nav-item,
+.nav-item-wrapper.nav-item--focus:hover > .nav-item,
+.nav-item-wrapper.nav-item--project:hover > .nav-item {
+    opacity: 1;
+}
+
+.nav-item-wrapper.nav-item--about:hover > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--blog:hover > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--focus:hover > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--project:hover > .nav-item .nav-icon {
+    transform: scale(1.15);
+}
+
+.nav-item-wrapper.nav-item--blog > .nav-item,
+.nav-item-wrapper.nav-item--focus > .nav-item,
+.nav-item-wrapper.nav-item--project > .nav-item {
+    cursor: pointer;
+}
+
+.nav-item-wrapper.nav-item--about > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--blog > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--focus > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--project > .nav-item .nav-icon {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 .nav-item-wrapper.nav-item--about {
     position: relative;
     display: inline-flex;
@@ -684,15 +711,15 @@ html[data-theme="dark"] .site-header--home {
 .about-tooltip {
     position: absolute;
     top: calc(100% + 14px);
-    left: auto;
-    right: 0;
+    left: 0;
+    right: auto;
     z-index: 5;
     display: grid;
     gap: 6px;
     width: max-content;
     max-width: min(360px, calc(100vw - 48px));
     min-width: 0;
-    padding: 12px 16px;
+    padding: 12px 10px;
     border: 1px solid var(--header-border);
     border-radius: 16px;
     background: var(--page-bg);
@@ -783,11 +810,12 @@ html[data-theme="dark"] .site-header--home {
 }
 
 .nav-item-wrapper.nav-item--about .blog-pill {
-    padding: 6px 8px !important;
+    padding: 4px 2px !important;
+    padding-left: 0 !important;
     border: none !important;
     border-radius: 6px !important;
     font-size: 14px !important;
-    gap: 4px !important;
+    gap: 6px !important;
 }
 
 .nav-item-wrapper.nav-item--about .blog-pill:hover {
@@ -1025,14 +1053,15 @@ html[data-theme="dark"] .site-header--home {
     position: absolute;
     top: calc(100% + 14px);
     left: auto;
-    right: 0;
+    right: -340px;
     z-index: 5;
     display: grid;
     gap: 10px;
     width: max-content;
-    max-width: min(460px, calc(100vw - 48px));
+    max-width: min(640px, calc(100vw - 48px));
     min-width: 0;
     padding: 12px 16px;
+    overflow: hidden;
     border: 1px solid rgba(67, 160, 71, 0.35);
     border-radius: 16px;
     background: var(--page-bg);
@@ -1065,23 +1094,38 @@ html[data-theme="dark"] .site-header--home {
 
 .nav-item-wrapper.nav-item--project .blog-column-posts {
     padding-left: 0;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .nav-item-wrapper.nav-item--project .blog-column-post {
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
+    gap: 2px 6px;
+    min-width: 0;
+}
+
+.nav-item-wrapper.nav-item--project .blog-column-post-title {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav-item-wrapper.nav-item--project .blog-column-post-desc {
-    flex: 0 0 100%;
+    flex: 1 1 100%;
     width: 100%;
     white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
     text-overflow: unset;
     overflow: visible;
     max-width: none;
-    line-height: 1.4;
-    padding-top: 2px;
-    padding-left: 21px;
+    line-height: 1.3;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 2px;
 }
 
 .nav-item-wrapper.nav-item--project .blog-column-post:nth-child(1) .blog-column-post-icon { stroke: #43a047 !important; color: #43a047; }
