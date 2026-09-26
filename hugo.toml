@@ -69,7 +69,7 @@ enableGitInfo = true
           icon = "home"
 
       [[languages.zh.menu.main]]
-        name = "发现"
+        name = "Stack"
         url = "/categories/"
         weight = 20
         [languages.zh.menu.main.params]
@@ -90,7 +90,7 @@ enableGitInfo = true
           icon = "project"
 
       [[languages.zh.menu.main]]
-        name = "技术方向"
+        name = "SRE"
         url = "/directions/"
         weight = 40
         [languages.zh.menu.main.params]

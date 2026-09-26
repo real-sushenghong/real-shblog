@@ -5,7 +5,7 @@
     en: ""
     zh: ""
   icon: "layout"
-  url: ""
+  url: "https://landscape.jimmysong.io/"
 
 - title:
     en: "Cloud Native Open Source"
@@ -14,4 +14,4 @@
     en: ""
     zh: ""
   icon: "github"
-  url: ""
+  url: "https://awesome.jimmysong.io/"

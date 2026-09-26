@@ -667,6 +667,33 @@ html[data-theme="dark"] .site-header--home {
     opacity: 0.7;
 }
 
+.nav-item-wrapper.nav-item--about:hover > .nav-item,
+.nav-item-wrapper.nav-item--blog:hover > .nav-item,
+.nav-item-wrapper.nav-item--focus:hover > .nav-item,
+.nav-item-wrapper.nav-item--project:hover > .nav-item {
+    opacity: 1;
+}
+
+.nav-item-wrapper.nav-item--about:hover > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--blog:hover > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--focus:hover > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--project:hover > .nav-item .nav-icon {
+    transform: scale(1.15);
+}
+
+.nav-item-wrapper.nav-item--blog > .nav-item,
+.nav-item-wrapper.nav-item--focus > .nav-item,
+.nav-item-wrapper.nav-item--project > .nav-item {
+    cursor: pointer;
+}
+
+.nav-item-wrapper.nav-item--about > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--blog > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--focus > .nav-item .nav-icon,
+.nav-item-wrapper.nav-item--project > .nav-item .nav-icon {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 .nav-item-wrapper.nav-item--about {
     position: relative;
     display: inline-flex;
@@ -684,15 +711,15 @@ html[data-theme="dark"] .site-header--home {
 .about-tooltip {
     position: absolute;
     top: calc(100% + 14px);
-    left: auto;
-    right: 0;
+    left: 0;
+    right: auto;
     z-index: 5;
     display: grid;
     gap: 6px;
     width: max-content;
     max-width: min(360px, calc(100vw - 48px));
     min-width: 0;
-    padding: 12px 16px;
+    padding: 12px 10px;
     border: 1px solid var(--header-border);
     border-radius: 16px;
     background: var(--page-bg);
@@ -782,6 +809,72 @@ html[data-theme="dark"] .site-header--home {
     transition-delay: 0.4s;
 }
 
+.nav-item-wrapper.nav-item--about .blog-pill {
+    padding: 4px 2px !important;
+    padding-left: 0 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    gap: 6px !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: rgba(128, 128, 128, 0.12) !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill-label {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill--profile .blog-pill-label {
+    color: #e8923d !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill--contact .blog-pill-label {
+    color: #26a69a !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill-desc {
+    display: none !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill--profile,
+.nav-item-wrapper.nav-item--about .blog-pill--contact {
+    border: none !important;
+    border-color: transparent !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill--profile:hover,
+.nav-item-wrapper.nav-item--about .blog-pill--contact:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.nav-item-wrapper.nav-item--about .tooltip-icon--user,
+.nav-item-wrapper.nav-item--about .tooltip-icon--mail {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill--profile .tooltip-icon--user {
+    stroke: #e8923d !important;
+}
+
+.nav-item-wrapper.nav-item--about .blog-pill--contact .tooltip-icon--mail {
+    stroke: #26a69a !important;
+}
+
+.nav-item-wrapper.nav-item--about .tooltip-icon--info {
+    display: none !important;
+}
+
+.nav-item-wrapper.nav-item--about .tooltip-separator {
+    display: none !important;
+}
+
 /* ── Blog tooltip ── */
 .nav-item-wrapper.nav-item--blog {
     position: relative;
@@ -834,6 +927,62 @@ html[data-theme="dark"] .site-header--home {
     pointer-events: auto;
     transform: translate(-50%, 0);
     transition-delay: 0.4s;
+}
+
+.nav-item-wrapper.nav-item--blog .blog-column-posts {
+    padding-left: 0;
+    border-top: 1px solid rgba(128, 128, 128, 0.15);
+    padding-top: 4px;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-header {
+    display: none;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-posts {
+    padding-left: 0;
+    gap: 4px;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post {
+    padding: 6px 8px;
+    border-bottom: none;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(1) .blog-column-post-icon {
+    color: #7c4dff;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(1) .blog-column-post-title {
+    color: #7c4dff;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(1):hover .blog-column-post-title {
+    color: #5c3bd0;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(2) .blog-column-post-icon {
+    color: #1e88e5;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(2) .blog-column-post-title {
+    color: #1e88e5;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(2):hover .blog-column-post-title {
+    color: #1565c0;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(n+3) .blog-column-post-icon {
+    color: #e8923d;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(n+3) .blog-column-post-title {
+    color: #e8923d;
+}
+
+.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(n+3):hover .blog-column-post-title {
+    color: #c77a2b;
 }
 
 /* ── Focus tooltip ── */
@@ -904,14 +1053,15 @@ html[data-theme="dark"] .site-header--home {
     position: absolute;
     top: calc(100% + 14px);
     left: auto;
-    right: 0;
+    right: -340px;
     z-index: 5;
     display: grid;
     gap: 10px;
     width: max-content;
-    max-width: min(460px, calc(100vw - 48px));
+    max-width: min(640px, calc(100vw - 48px));
     min-width: 0;
     padding: 12px 16px;
+    overflow: hidden;
     border: 1px solid rgba(67, 160, 71, 0.35);
     border-radius: 16px;
     background: var(--page-bg);
@@ -944,23 +1094,38 @@ html[data-theme="dark"] .site-header--home {
 
 .nav-item-wrapper.nav-item--project .blog-column-posts {
     padding-left: 0;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .nav-item-wrapper.nav-item--project .blog-column-post {
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
+    gap: 2px 6px;
+    min-width: 0;
+}
+
+.nav-item-wrapper.nav-item--project .blog-column-post-title {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav-item-wrapper.nav-item--project .blog-column-post-desc {
-    flex: 0 0 100%;
+    flex: 1 1 100%;
     width: 100%;
     white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
     text-overflow: unset;
     overflow: visible;
     max-width: none;
-    line-height: 1.4;
-    padding-top: 2px;
-    padding-left: 21px;
+    line-height: 1.3;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 2px;
 }
 
 .nav-item-wrapper.nav-item--project .blog-column-post:nth-child(1) .blog-column-post-icon { stroke: #43a047 !important; color: #43a047; }
@@ -996,6 +1161,33 @@ html[data-theme="dark"] .site-header--home {
 .site-header--home .nav-item-wrapper.nav-item--project .blog-tooltip .blog-column-header {
     color: #222222 !important;
 }
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(1) .blog-column-post-title {
+    color: #7c4dff !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(1) .blog-column-post-icon {
+    color: #7c4dff !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(1):hover .blog-column-post-title {
+    color: #5c3bd0 !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(2) .blog-column-post-title {
+    color: #1e88e5 !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(2) .blog-column-post-icon {
+    color: #1e88e5 !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(2):hover .blog-column-post-title {
+    color: #1565c0 !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(n+3) .blog-column-post-title {
+    color: #e8923d !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(n+3) .blog-column-post-icon {
+    color: #e8923d !important;
+}
+.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(n+3):hover .blog-column-post-title {
+    color: #c77a2b !important;
+}
 .site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .tooltip-desc,
 .site-header--home .nav-item-wrapper.nav-item--blog .blog-tooltip .tooltip-desc,
 .site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post-desc,
@@ -1015,10 +1207,56 @@ html[data-theme="dark"] .site-header--home {
     color: #666666 !important;
 }
 .site-header--home .about-tooltip .blog-pill-label {
-    color: #222222 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+.site-header--home .about-tooltip .blog-pill--profile .blog-pill-label {
+    color: #e8923d !important;
+}
+.site-header--home .about-tooltip .blog-pill--contact .blog-pill-label {
+    color: #26a69a !important;
 }
 .site-header--home .about-tooltip .blog-pill-desc {
-    color: #666666 !important;
+    display: none !important;
+}
+.site-header--home .about-tooltip .blog-pill {
+    padding: 6px 8px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    gap: 4px !important;
+}
+.site-header--home .about-tooltip .blog-pill:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: rgba(128, 128, 128, 0.12) !important;
+}
+.site-header--home .about-tooltip .blog-pill--profile,
+.site-header--home .about-tooltip .blog-pill--contact {
+    border: none !important;
+    border-color: transparent !important;
+}
+.site-header--home .about-tooltip .blog-pill--profile:hover,
+.site-header--home .about-tooltip .blog-pill--contact:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.site-header--home .about-tooltip .tooltip-icon--user,
+.site-header--home .about-tooltip .tooltip-icon--mail {
+    width: 14px !important;
+    height: 14px !important;
+}
+.site-header--home .about-tooltip .blog-pill--profile .tooltip-icon--user {
+    stroke: #e8923d !important;
+}
+.site-header--home .about-tooltip .blog-pill--contact .tooltip-icon--mail {
+    stroke: #26a69a !important;
+}
+.site-header--home .about-tooltip .tooltip-icon--info {
+    display: none !important;
+}
+.site-header--home .about-tooltip .tooltip-separator {
+    display: none !important;
 }
 
 .blog-pill {
@@ -2464,7 +2702,7 @@ html[data-theme="dark"] .profile-link--explore {
 .profile-detail {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 24px 64px;
+    padding: 40px 24px 0;
     display: grid;
     gap: 56px;
 }
