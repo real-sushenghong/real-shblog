@@ -1,0 +1,13 @@
+{{- $sepClass := "footer-separator" -}}
+{{- with . -}}
+{{- if reflect.IsMap . -}}
+{{- $sepClass = .sep -}}
+{{- end -}}
+{{- end -}}
+© {{ now.Year }} Sheng Hone. {{ i18n "all_rights_reserved" }}
+<span class="{{ $sepClass }}">·</span>
+<a href="{{ "privacy/" | relLangURL }}">{{ i18n "privacy_policy" }}</a>
+<span class="{{ $sepClass }}">·</span>
+<a href="{{ "terms/" | relLangURL }}">{{ i18n "terms_of_use" }}</a>
+<span class="{{ $sepClass }}">·</span>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
