@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '0 */2 * * *'
 
 permissions:
   contents: read
@@ -24,6 +26,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Sync project activity order
+        continue-on-error: true
+        run: |
+          pip install --quiet pyyaml
+          python3 scripts/sync_projects.py
 
       - name: Set up Go
         uses: actions/setup-go@v5
