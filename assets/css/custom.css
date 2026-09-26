@@ -2486,9 +2486,7 @@ html[data-theme="dark"] .profile-link--explore {
     height: 240px;
     border-radius: 24px;
     overflow: hidden;
-    border: 3px solid var(--header-border);
     box-shadow: 0 8px 32px var(--header-shadow);
-    background: var(--page-bg);
     flex-shrink: 0;
 }
 
@@ -2837,4 +2835,10 @@ html[data-theme="dark"] .profile-detail-section--alt {
     .profile-detail-section-head h2 {
         font-size: 22px;
     }
+}
+
+/* Profile detail page: break out of .main width constraint */
+.main:has(.profile-detail) {
+    max-width: none !important;
+    padding: var(--gap, 24px) !important;
 }
