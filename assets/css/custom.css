@@ -936,53 +936,19 @@ html[data-theme="dark"] .site-header--home {
 }
 
 .nav-item-wrapper.nav-item--focus .blog-column-header {
-    display: none;
+    display: flex;
 }
 
 .nav-item-wrapper.nav-item--focus .blog-column-posts {
     padding-left: 0;
     gap: 4px;
+    border-top: 1px solid rgba(128, 128, 128, 0.15);
+    padding-top: 4px;
 }
 
 .nav-item-wrapper.nav-item--focus .blog-column-post {
     padding: 6px 8px;
     border-bottom: none;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(1) .blog-column-post-icon {
-    color: #7c4dff;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(1) .blog-column-post-title {
-    color: #7c4dff;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(1):hover .blog-column-post-title {
-    color: #5c3bd0;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(2) .blog-column-post-icon {
-    color: #1e88e5;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(2) .blog-column-post-title {
-    color: #1e88e5;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(2):hover .blog-column-post-title {
-    color: #1565c0;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(n+3) .blog-column-post-icon {
-    color: #e8923d;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(n+3) .blog-column-post-title {
-    color: #e8923d;
-}
-
-.nav-item-wrapper.nav-item--focus .blog-column-post:nth-child(n+3):hover .blog-column-post-title {
-    color: #c77a2b;
 }
 
 /* ── Focus tooltip ── */
@@ -1005,11 +971,12 @@ html[data-theme="dark"] .site-header--home {
     top: calc(100% + 14px);
     left: 50%;
     right: auto;
+    margin-left: -80px;
     z-index: 5;
     display: grid;
     gap: 10px;
     width: max-content;
-    max-width: min(500px, calc(100vw - 48px));
+    max-width: min(1200px, calc(100vw - 32px));
     min-width: 0;
     padding: 12px 16px;
     border: 1px solid var(--header-border);
@@ -1160,33 +1127,6 @@ html[data-theme="dark"] .site-header--home {
 .site-header--home .nav-item-wrapper.nav-item--blog .blog-tooltip .blog-column-header,
 .site-header--home .nav-item-wrapper.nav-item--project .blog-tooltip .blog-column-header {
     color: #222222 !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(1) .blog-column-post-title {
-    color: #7c4dff !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(1) .blog-column-post-icon {
-    color: #7c4dff !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(1):hover .blog-column-post-title {
-    color: #5c3bd0 !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(2) .blog-column-post-title {
-    color: #1e88e5 !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(2) .blog-column-post-icon {
-    color: #1e88e5 !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(2):hover .blog-column-post-title {
-    color: #1565c0 !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(n+3) .blog-column-post-title {
-    color: #e8923d !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(n+3) .blog-column-post-icon {
-    color: #e8923d !important;
-}
-.site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .blog-column-post:nth-child(n+3):hover .blog-column-post-title {
-    color: #c77a2b !important;
 }
 .site-header--home .nav-item-wrapper.nav-item--focus .blog-tooltip .tooltip-desc,
 .site-header--home .nav-item-wrapper.nav-item--blog .blog-tooltip .tooltip-desc,
@@ -1355,6 +1295,14 @@ html[data-theme="dark"] .site-header--home {
     stroke: #00bcd4;
 }
 
+.tooltip-icon--shield {
+    stroke: #e53935;
+}
+
+.tooltip-icon--sre {
+    stroke: #43a047;
+}
+
 /* ── Blog tooltip column layout ── */
 .blog-columns {
     display: flex;
@@ -1408,6 +1356,14 @@ html[data-theme="dark"] .site-header--home {
 
 .blog-column-header--cn {
     color: #00bcd4;
+}
+
+.blog-column-header--shield {
+    color: #e53935;
+}
+
+.blog-column-header--sre {
+    color: #43a047;
 }
 
 .blog-column-header--more {
@@ -1484,6 +1440,12 @@ html[data-theme="dark"] .site-header--home {
 }
 .blog-column:has(.blog-column-header--cn) .blog-column-post-icon {
     color: #00bcd4;
+}
+.blog-column:has(.blog-column-header--shield) .blog-column-post-icon {
+    color: #e53935;
+}
+.blog-column:has(.blog-column-header--sre) .blog-column-post-icon {
+    color: #43a047;
 }
 .blog-column:has(.blog-column-header--more) .blog-column-post-icon {
     color: #ff8f00;
@@ -2454,7 +2416,7 @@ html[data-theme="dark"] .series-chapter {
 .profile-links {
     grid-column: 2;
     grid-row: 2;
-    margin-left: 48px;
+    margin-left: 248px;
     margin-right: -160px;
     display: flex;
     gap: 10px;
@@ -2923,7 +2885,7 @@ html[data-theme="dark"] .profile-detail-section--alt {
     justify-content: center;
     margin-bottom: 6px;
 }
-
+再向右移动一点
 .profile-detail-practice-icon svg {
     width: 22px;
     height: 22px;

@@ -21,7 +21,7 @@ enableGitInfo = true
           icon = "home"
 
       [[languages.en.menu.main]]
-        name = "Discover"
+        name = "Stack"
         url = "/categories/"
         weight = 20
         [languages.en.menu.main.params]
@@ -42,7 +42,7 @@ enableGitInfo = true
           icon = "project"
 
       [[languages.en.menu.main]]
-        name = "Focus"
+        name = "SRE"
         url = "/directions/"
         weight = 40
         [languages.en.menu.main.params]
